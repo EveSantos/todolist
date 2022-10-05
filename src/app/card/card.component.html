@@ -33,39 +33,13 @@
         <h3>A fazer</h3>
         <table class="table table-striped">
           <tbody>
-            <tr>
+            <tr *ngFor="let task of taks">
               <td>
                 <a href="">
                   <i class="fa-solid fa-arrow-left"></i>
                 </a>
               </td>
-              <td>Lavar louça</td>
-              <td>
-                <a href="">
-                  <i class="fa-solid fa-arrow-right"></i>
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a href="">
-                  <i class="fa-solid fa-arrow-left"></i>
-                </a>
-              </td>
-              <td>Estudar</td>
-              <td>
-                <a href="">
-                  <i class="fa-solid fa-arrow-right"></i>
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a href="">
-                  <i class="fa-solid fa-arrow-left"></i>
-                </a>
-              </td>
-              <td>Fazer feira</td>
+              <td>{{task.name}}</td>
               <td>
                 <a href="">
                   <i class="fa-solid fa-arrow-right"></i>

@@ -8,6 +8,12 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class CardComponent implements OnInit {
 
+  public taks:Array<any> = [
+    {id: 1, name: 'Lavar louça'},
+    {id: 2, name: 'Estudar'},
+    {id: 3, name: 'Fazer Feira'},
+  ];
+
   valueoption: any;
   sendform: FormGroup;
   constructor(private formbuilder: FormBuilder
@@ -16,6 +22,7 @@ export class CardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.taks);
     this.sendform = this.formbuilder.group({
     send: ['']
   })
@@ -24,7 +31,8 @@ export class CardComponent implements OnInit {
 
   send(){
     this.valueoption = this.sendform.value.send;
-    console.log(this.valueoption);
+    this.taks.push({id: this.taks.length, name: this.valueoption});
+    this.sendform.reset();
   }
 
 }
