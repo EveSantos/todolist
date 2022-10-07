@@ -1,6 +1,6 @@
 <div class="cont">
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <button type="button" class="add btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Adicionar Tarefa
   </button>
 
@@ -9,7 +9,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Task</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -21,39 +21,73 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button (click)="send()" type="submit" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button (click)="send()" type="submit" class="btn btn-primary">Adicionar</button>
         </div>
       </div>
     </div>
   </div>
   <div class="container text-center">
     <div class="row">
-      <div class="col">
-        <h3>A fazer</h3>
+      <div class="col rounded">
+        <h3>A Fazer</h3>
         <table class="table table-striped">
           <tbody>
-            <tr *ngFor="let task of taks">
+            <tr *ngFor="let task of task">
               <td>
-                <a href="">
+                <button  type="button" class="btn disabled">
                   <i class="fa-solid fa-arrow-left"></i>
-                </a>
+                </button>
               </td>
               <td>{{task.name}}</td>
               <td>
-                <a href="">
+                <button (click)="doing(task)" type="button" class="btn ">
                   <i class="fa-solid fa-arrow-right"></i>
-                </a>
+                </button>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div class="col">
-        Fazendo
+      <div class="col rounded">
+        <h3>Fazendo</h3>
+        <table class="table table-striped">
+          <tbody>
+            <tr *ngFor="let task of task2">
+              <td>
+                <button (click)="todo(task)" type="button" class="btn ">
+                  <i class="fa-solid fa-arrow-left"></i>
+                </button>
+              </td>
+              <td>{{task.name}}</td>
+              <td>
+                <button (click)="done(task)" type="button" class="btn ">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="col">
-        Feito
+      <div class="col rounded">
+        <h3>Feito</h3>
+        <table class="table table-striped">
+          <tbody>
+            <tr *ngFor="let task of task3">
+              <td>
+                <button (click)="doing2(task)" type="button" class="btn ">
+                  <i class="fa-solid fa-arrow-left"></i>
+                </button>
+              </td>
+              <td>{{task.name}}</td>
+              <td>
+                <button type="button" class="btn disabled">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Task } from '../models/task.model';
 
 @Component({
   selector: 'app-card',
@@ -8,12 +9,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class CardComponent implements OnInit {
 
-  public taks:Array<any> = [
-    {id: 1, name: 'Lavar louça'},
-    {id: 2, name: 'Estudar'},
-    {id: 3, name: 'Fazer Feira'},
-  ];
-
+  task:Task[] = [];
+  task2:Task[] = [];
+  task3:Task[] = [];
   valueoption: any;
   sendform: FormGroup;
   constructor(private formbuilder: FormBuilder
@@ -22,7 +20,6 @@ export class CardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.taks);
     this.sendform = this.formbuilder.group({
     send: ['']
   })
@@ -31,8 +28,44 @@ export class CardComponent implements OnInit {
 
   send(){
     this.valueoption = this.sendform.value.send;
-    this.taks.push({id: this.taks.length, name: this.valueoption});
+    this.task.push({id: this.task.length+1, name: this.valueoption});
     this.sendform.reset();
   }
 
+  nextState(id:number){
+    console.log(id);
+  }
+
+  prevState(id:number){
+  }
+
+  doing(taskvalue:Task){
+    const index = this.task.indexOf(taskvalue);
+    this.task.splice(index,1);
+    this.task2.push(taskvalue);
+  }
+
+  todo(taskvalue:Task){
+    const index = this.task2.indexOf(taskvalue);
+    this.task2.splice(index,1);
+    this.task.push(taskvalue);
+  }
+
+  done(taskvalue:Task){
+    // console.log(this.task2)
+    // console.log(this.task3)
+    console.log(taskvalue);
+    const index = this.task2.indexOf(taskvalue);
+    this.task2.splice(index,1);
+    console.log(taskvalue);
+    // console.log(this.task2)
+    // console.log(this.task3)
+    this.task3.push(taskvalue);
+  }
+
+  doing2(taskvalue:Task){
+    const index = this.task3.indexOf(taskvalue);
+    this.task3.splice(index,1);
+    this.task2.push(taskvalue);
+  }
 }

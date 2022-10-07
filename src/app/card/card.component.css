@@ -4,13 +4,26 @@
   margin-top: 5%;
 }
 
-.btn{
+label{
+  border: none;
+}
+
+.add{
+  border: none;
   margin-left: 10%;
+}
+
+.btn{
+  border: none;
 }
 
 .col{
   background-color: rgb(235, 235, 235);
-  height: 300px;
+  min-height: 300px;
   margin-left: 15px;
   margin-top: 30px;
+}
+
+.modal-footer{
+  justify-content: space-between;
 }
